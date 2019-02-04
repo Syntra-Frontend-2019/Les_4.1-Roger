@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mee te brengen van de Colruyt</h1>
+<p class="list"></p>
+<p>
+        <input type="text" id="addInput">
+        <button onclick="addToArray();">Add</button>  <button onclick="deleteFruit();">Remove</button>
+    </p>
+    <p id="antwoord"></p>
+<script>
+        var fruit = ["Waspoeder", "Kip", "Alcoholstift", "Witte wijn"];
+        var addInput = document.querySelector("#addInput");
+        var indexInput = document.querySelector("#indexInput");
+        var list = document.querySelector(".list");
+  
+        function addToArray(){
+            var newFruit = addInput.value;
+            fruit.push(newFruit);
+            addInput.value = "";
+            printList();
+        }
+        function deleteFruit(){
+            var lookForFruit = addInput.value;
+            var index = fruit.indexOf(lookForFruit);
+            if(index !== -1){
+                fruit.splice(index, 1);
+            } else {
+        document.querySelector("#antwoord").innerHTML = "niet gevonden";
+            }
+            
+            printList();
+        }
+        function printList(){
+            list.innerHTML = '<ul><li>' + fruit.join('</li><li>') + '</li></ul>';
+        }
+        printList();
+    </script>   
+
+</body>
+</html>
